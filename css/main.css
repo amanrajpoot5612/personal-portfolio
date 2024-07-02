@@ -2106,3 +2106,25 @@ section,
   box-shadow: 10px 10px 60px 2px rgb(208, 210, 211);
   padding: 20px;
 }
+.isotope-container{
+
+}
+.portfolio-item{
+  /* box-shadow: ; */
+  box-shadow: rgba(161, 5, 5, 0.24) 0px 3px 8px;
+  border-radius: 10px;
+}
+.portfolio-item img{
+  border-radius: 10px;
+}
+.hide {
+  display: none;
+}
+
+.bi-download:hover + .hide {
+  display: block;
+  color: red;
+}
+.bi-chevron-right span{
+  cursor: pointer;
+}
