@@ -8,60 +8,21 @@
 (function(){
   emailjs.init("lsCfuwZUTJFO9VbYf");
 })();
-(function() {
-  "use strict";
+  document.querySelector('.contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
+    const serviceID = 'service_eot472h';
+    const templateID = 'template_un51287';
 
-  function submitForm() {
-    // Clear previous error messages
-    document.getElementById('nameError').innerText = '';
-    document.getElementById('emailError').innerText = '';
-    document.getElementById('subjectError').innerText = '';
-    document.getElementById('messageError').innerText = '';
-
-    // Get form values
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var subject = document.getElementById('subject').value;
-    var message = document.getElementById('message').value;
-
-    // Validate form
-    var isValid = true;
-
-    if (name === '') {
-        document.getElementById('nameError').innerText = 'Name is required';
-        isValid = false;
-    }
-
-    if (email === '') {
-        document.getElementById('emailError').innerText = 'Email is required';
-        isValid = false;
-    } else if (!validateEmail(email)) {
-        document.getElementById('emailError').innerText = 'Invalid email format';
-        isValid = false;
-    }
-
-    if (subject === '') {
-        document.getElementById('subjectError').innerText = 'Subject is required';
-        isValid = false;
-    }
-
-    if (message === '') {
-        document.getElementById('messageError').innerText = 'Message is required';
-        isValid = false;
-    }
-
-    // If form is valid, submit the form
-    if (isValid) {
-        alert('Form submitted successfully!');
-        // Here you can add the code to actually send the form data to your server
-    }
-}
-
-function validateEmail(email) {
-    var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-}
+    emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+            alert('Email sent successfully!');
+        }, (err) => {
+            alert('Failed to send email. Please try again later.');
+            console.log(JSON.stringify(err));
+        });
+});
+ 
   /**
    * Apply .scrolled class to the body as the page is scrolled down
    */
@@ -280,7 +241,7 @@ function validateEmail(email) {
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
-})();
+// })();
 function number() {
   // Get the text field
   let copyText = document.getElementById("num");
