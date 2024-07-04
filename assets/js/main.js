@@ -5,10 +5,27 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-
+(function(){
+  emailjs.init("lsCfuwZUTJFO9VbYf");
+})();
 (function() {
   "use strict";
 
+
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const serviceID = 'service_eot472h';
+    const templateID = 'template_83erorv';
+
+    emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+            alert('Email sent successfully!');
+        }, (err) => {
+            alert('Failed to send email. Please try again later.');
+            console.log(JSON.stringify(err));
+        });
+});
   /**
    * Apply .scrolled class to the body as the page is scrolled down
    */
