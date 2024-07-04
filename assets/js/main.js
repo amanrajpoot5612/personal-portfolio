@@ -11,6 +11,57 @@
 (function() {
   "use strict";
 
+
+  function submitForm() {
+    // Clear previous error messages
+    document.getElementById('nameError').innerText = '';
+    document.getElementById('emailError').innerText = '';
+    document.getElementById('subjectError').innerText = '';
+    document.getElementById('messageError').innerText = '';
+
+    // Get form values
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var subject = document.getElementById('subject').value;
+    var message = document.getElementById('message').value;
+
+    // Validate form
+    var isValid = true;
+
+    if (name === '') {
+        document.getElementById('nameError').innerText = 'Name is required';
+        isValid = false;
+    }
+
+    if (email === '') {
+        document.getElementById('emailError').innerText = 'Email is required';
+        isValid = false;
+    } else if (!validateEmail(email)) {
+        document.getElementById('emailError').innerText = 'Invalid email format';
+        isValid = false;
+    }
+
+    if (subject === '') {
+        document.getElementById('subjectError').innerText = 'Subject is required';
+        isValid = false;
+    }
+
+    if (message === '') {
+        document.getElementById('messageError').innerText = 'Message is required';
+        isValid = false;
+    }
+
+    // If form is valid, submit the form
+    if (isValid) {
+        alert('Form submitted successfully!');
+        // Here you can add the code to actually send the form data to your server
+    }
+}
+
+function validateEmail(email) {
+    var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
   /**
    * Apply .scrolled class to the body as the page is scrolled down
    */
