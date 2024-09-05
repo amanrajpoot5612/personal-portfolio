@@ -30,4 +30,4 @@
 - W3 school
 
 # Demo photo
-<img src = "">
+<img src = "/assets/img/image.png">
